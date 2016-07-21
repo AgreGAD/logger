@@ -1,0 +1,14 @@
+app.system.logger.name:             'logger'
+app.system.logger.error_level_map:  '&config/error_level_map.php'
+
+services:
+  app.system.logger.handler_factory:
+    class:          'Agregad\Logger\HandlerFactory'
+
+  app.system.logger:
+    class:          'Monolog\Logger'
+    arguments:      ['%app.system.logger.name%', '#app.system.logger.handlers\toArray', '#app.system.logger.processors\toArray']
+    postTriggers:
+      - class:      'Monolog\ErrorHandler'
+        method:     'register'
+        arguments:  ['@app.system.logger', '%app.system.logger.error_level_map%', false, 400]
