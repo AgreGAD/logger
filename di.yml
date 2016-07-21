@@ -7,7 +7,7 @@ services:
 
   app.system.logger:
     class:          'Monolog\Logger'
-    arguments:      ['%app.system.logger.name%', '#app.system.logger.handlers\toArray', '#app.system.logger.processors\toArray']
+    arguments:      ['%app.system.logger.name%', '#app.system.logger.handlers/toArray', '#app.system.logger.processors/toArray']
     postTriggers:
       - class:      'Monolog\ErrorHandler'
         method:     'register'
