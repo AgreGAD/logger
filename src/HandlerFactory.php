@@ -15,7 +15,7 @@ class HandlerFactory
      * @param bool $useLocking
      * @return StreamHandler
      */
-    public function createStreamHandler($stream, $level = Logger::DEBUG, $bubble = true, $filePermission = 0777, $useLocking = false)
+    public function createStreamHandler($stream, $level = Logger::DEBUG, $bubble = true, $filePermission = 0400, $useLocking = false)
     {
         return new StreamHandler($stream, $level, $bubble, $filePermission, $useLocking);
     }
